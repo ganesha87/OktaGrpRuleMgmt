@@ -99,7 +99,7 @@ locals{
     expression_value  = "user.division==\"Approvers\" AND user.department==\"Pay\""
   }
 
-  Testers-Shadow-AWS-Group-Membership {
+  Testers-Shadow-AWS-Group-Membership = {
     name              = "Testers-Shadow-AWS-Group-Membership"
     group_assignments = ["00g80n8p061TuyZc25d7"]
     expression_value  = "user.division==\"Testers\" AND user.department==\"Engineering\" AND isMemberOfAnyGroup(\"00g80o66wsa2rCK5z5d7\") "
