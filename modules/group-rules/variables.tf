@@ -7,5 +7,13 @@ variable "group_rules" {
     group_assignments = list(string)
   }))
 
-  default = []
+  default = [
+    {
+      name               = ""
+      status             = "ACTIVE"
+      expression_type    = "urn:okta:expression:1.0"
+      expression_value   = ""
+      group_assignments = []
+    }
+  ]
 }
