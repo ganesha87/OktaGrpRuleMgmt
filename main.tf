@@ -106,8 +106,8 @@ locals{
   }
  } 
 
-module "group_rule" {
-  source = "./modules/group-rule"
+module "group_rules" {
+  source = "./modules/group-rules"
   group_rules = [
     local.Testers-Shadow-AWS-Group-Membership,
     local.Test-Shadow-AWS-Group-Membership
