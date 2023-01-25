@@ -97,12 +97,16 @@ locals{
     name              = "Test-Shadow-AWS-Group-Membership"
     group_assignments = ["00g80oxv2bTl0XYnT5d7"]
     expression_value  = "user.division==\"Approvers\" AND user.department==\"Pay\""
+    status            = "ACTIVE"
+    expression_type   = "urn:okta:expression:1.0"
   }
 
   Testers-Shadow-AWS-Group-Membership = {
     name              = "Testers-Shadow-AWS-Group-Membership"
     group_assignments = ["00g80n8p061TuyZc25d7"]
     expression_value  = "user.division==\"Testers\" AND user.department==\"Engineering\" AND isMemberOfAnyGroup(\"00g80o66wsa2rCK5z5d7\") "
+    status            = "ACTIVE"
+    expression_type   = "urn:okta:expression:1.0"
   }
  } 
 
