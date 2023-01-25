@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    okta = {
+      source = "okta/okta"
+      version = "~> 3.40"
+    }
+  }
+}
 resource "okta_group_rule" "this" {
   for_each         = var.group_rules
   name              = each.name
