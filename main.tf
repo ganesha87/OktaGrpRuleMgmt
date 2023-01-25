@@ -110,5 +110,5 @@ variable "Testers-Shadow-AWS-Group-Membership" {
 
 module "group_rule" {
   source = "./modules/group_rule"
-  var.Testers-Shadow-AWS-Group-Membership
+  group_rule = var.Testers-Shadow-AWS-Group-Membership
 }
