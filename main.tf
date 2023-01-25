@@ -92,23 +92,22 @@ resource "okta_group_rule" "Rule-Test" {
   expression_type   = "urn:okta:expression:1.0"
   expression_value  = "isMemberOfAnyGroup(\"00g80o66wsa2rCK5z5d7\",\"00g80n8l6gMFvO4UL5d7\")"
 }
-resource "okta_group_rule" "Test-Shadow-AWS-Group-Membership" {
+local "Test-Shadow-AWS-Group-Membership" {
   name              = "Test-Shadow-AWS-Group-Membership"
-  status            = "ACTIVE"
   group_assignments = ["00g80oxv2bTl0XYnT5d7"]
-  expression_type   = "urn:okta:expression:1.0"
   expression_value  = "user.division==\"Approvers\" AND user.department==\"Pay\""
 }
 
-variable "Testers-Shadow-AWS-Group-Membership" {
+local "Testers-Shadow-AWS-Group-Membership" {
   name              = "Testers-Shadow-AWS-Group-Membership"
-  status            = "ACTIVE"
   group_assignments = ["00g80n8p061TuyZc25d7"]
-  expression_type   = "urn:okta:expression:1.0"
   expression_value  = "user.division==\"Testers\" AND user.department==\"Engineering\" AND isMemberOfAnyGroup(\"00g80o66wsa2rCK5z5d7\") "
 }
 
 module "group_rule" {
   source = "./modules/group-rule"
-  group_rule = var.Testers-Shadow-AWS-Group-Membership
+  group_rules = [
+    local.Testers-Shadow-AWS-Group-Membership,
+    local.Test-Shadow-AWS-Group-Membership
+    ]
 }
